@@ -39,7 +39,7 @@
         <!-- Dica -->
         <div class="mb-4">
             <label class="block mb-1 font-medium">Dica Info</label>
-            <input type="text" name="dica" class="w-full border border-gray-300 rounded-md p-2 focus:outline-pink-500">
+            <input type="text" name="dica" class="w-full border border-gray-300 rounded-md p-2 focus:outline-pink-500" required>
         </div>
 
          <!-- Dica -->
