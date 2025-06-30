@@ -14,6 +14,8 @@ Route::get('/', function () {
 Route::post('/musicas/store', [MusicController::class, 'store'])->name('musicas.store');
 Route::post('/dias/store', [DiaController::class, 'store'])->name('dias.store');
 
+Route::post('/musicas/store2', [MusicController::class, 'store2'])->name('musicas.store2');
+
 
 // rotas get
 Route::get('/musicas', [MusicController::class, 'index'])->name('musicas.index');

@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'eleven' => [
+        'api_key' => env('ELEVEN_API_KEY'),
+        'voice_id' => env('ELEVEN_VOICE_ID', '21m00Tcm4TlvDq8ikWAM'),
+    ],
+
 ];

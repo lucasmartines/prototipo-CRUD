@@ -27,7 +27,7 @@
 <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md">
     <h2 class="text-2xl font-bold mb-4 text-pink-600">Adicionar Audio</h2>
 
-    <form action="{{ route('musicas.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('musicas.store2') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <!-- Descrição -->
@@ -39,7 +39,13 @@
         <!-- Dica -->
         <div class="mb-4">
             <label class="block mb-1 font-medium">Dica Info</label>
-            <input type="dica" name="dica" class="w-full border border-gray-300 rounded-md p-2 focus:outline-pink-500">
+            <input type="text" name="dica" class="w-full border border-gray-300 rounded-md p-2 focus:outline-pink-500">
+        </div>
+
+         <!-- Dica -->
+        <div class="mb-4">
+            <label class="block mb-1 font-medium">Arquivo</label>
+            <input type="file" name="audio" >
         </div>
 
         <!-- Prioridade -->

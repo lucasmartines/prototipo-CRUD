@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Dia;
 use Illuminate\Http\Request;
 use App\Services\MusicaService;
+use App\Models\Musica;
+use App\Services\AudioStorageService;
+use App\Services\AudioSources\ElevenLabsAudio;
+use App\Services\AudioSources\UploadedAudio;
+
 
 class MusicController extends Controller
 {
@@ -52,4 +57,19 @@ class MusicController extends Controller
             return back()->withErrors(['erro' => $e->getMessage()]);
         }
     }
+
+   public function store2(Request $request, MusicaService $musicaService)
+    {
+        $validated = $request->validate([
+            'prioridade' => 'nullable|integer',
+            'descricao'  => 'required|string|max:255',
+            'dia_id'     => 'required|exists:dias,id',
+            'dica'       => 'nullable|string|max:255',
+        ]);
+
+        $musicaService->adicionar($request);
+
+        return back()->with('success', 'Música adicionada!');
+    }
+
 }

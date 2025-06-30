@@ -6,11 +6,19 @@ use App\Models\Dia;
 use App\Models\Musica;
 use App\Services\AudioService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+
+use App\Services\AudioStorageService;
+use App\Services\AudioSources\UploadedAudio;
+use App\Services\AudioSources\ElevenLabsAudio;
+use App\Services\Clients\ElevenLabsClient;
 
 class MusicaService
 {
     public function __construct(
-        protected AudioService $audioService
+        protected AudioService $audioService,
+        protected AudioStorageService $storageService
     ) {}
 
     public function adicionarMusica(array $data): Musica
@@ -30,6 +38,25 @@ class MusicaService
                 'prioridade' => $data['prioridade'] ?? 0,
             ]);
         });
+    }
+
+     public function adicionar( Request $request ) : Musica
+    {
+
+     
+        $source = $request->hasFile('audio')
+            ? new UploadedAudio($request->file('audio'))
+            : new ElevenLabsAudio($request->descricao, $this->client);
+
+        $url = $this->storageService->salvar($source);
+
+        return Musica::create([
+            'descricao' => $request->descricao,
+            'url' => $url,
+            'dia_id' => $request->dia_id,
+            'dica' => $request->dica,
+            'prioridade' => $request->prioridade ?? 0,
+        ]);
     }
 
     public function deletarDia(int $id): void
