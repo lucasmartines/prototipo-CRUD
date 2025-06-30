@@ -12,13 +12,14 @@ use Illuminate\Http\Request;
 use App\Services\AudioStorageService;
 use App\Services\AudioSources\UploadedAudio;
 use App\Services\AudioSources\ElevenLabsAudio;
-use App\Services\Clients\ElevenLabsClient;
+use App\Clients\ElevenLabsClient;
 
 class MusicaService
 {
     public function __construct(
         protected AudioService $audioService,
-        protected AudioStorageService $storageService
+        protected AudioStorageService $storageService,
+        protected ElevenLabsClient $client, 
     ) {}
 
     public function adicionarMusica(array $data): Musica
