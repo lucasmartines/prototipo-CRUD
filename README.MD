@@ -33,7 +33,7 @@ Este repositório é parte dos meus estudos práticos sobre arquitetura limpa, L
 ## 🔧 Como rodar
 
 ```bash
-git clone https://github.com/seuusuario/nome-do-projeto.git
+git clone https://github.com/lucasmartines/prototipo-CRUD.git
 cd nome-do-projeto
 composer install
 cp .env.example .env
